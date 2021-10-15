@@ -6,7 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "tb_user")
+@Table(name = "user")
 @Data
 public class User {
 
@@ -20,8 +20,5 @@ public class User {
 
     @Column(name = "password", nullable = false, length = 64)
     private String password;
-
-    @Column(name = "email", length = 64)
-    private String email;
 
 }

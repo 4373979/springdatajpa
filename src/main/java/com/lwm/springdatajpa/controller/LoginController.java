@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -39,6 +40,12 @@ public class LoginController {
     public User getUserInfo(@PathVariable("id") String userId) {
         Optional<User> optional = userRepository.findById(userId);
         return optional.orElseGet(User::new);
+    }
+
+    @PostMapping("/select")
+    public User selUser(@RequestBody User user) {
+        List<User> users = userRepository.findByUsernameAndPassword(user.getUsername(),user.getPassword());
+        return users.get(0);
     }
 
     @GetMapping("/list")
